@@ -16,14 +16,22 @@ def get_unique_students(data):
     return unique_students
 
 unique_enrolled_students = get_unique_students(enrollments)
-print len(unique_enrolled_students)
+#print len(unique_enrolled_students)
 
 for engagement_record in daily_engagement:
     engagement_record['account_key'] = engagement_record['acct']
     del(engagement_record['acct'])
         
 unique_engagement_students = get_unique_students(daily_engagement)
-print len(unique_engagement_students)
+#print len(unique_engagement_students)
 
 unique_project_submitters = get_unique_students(project_submissions)
-print len(unique_project_submitters )
+#print len(unique_project_submitters )
+
+t = 0
+for e in enrollments:
+    student = e['account_key']
+    if student not in unique_engagement_students:
+        #print e
+        t += 1
+print t
